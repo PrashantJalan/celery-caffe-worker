@@ -1,0 +1,148 @@
+[2015-07-03 18:23:54,222: WARNING/MainProcess] /home/ubuntu/cloudcv/ccv/local/lib/python2.7/site-packages/celery/apps/worker.py:161: CDeprecationWarning: 
+Starting from version 3.2 Celery will refuse to accept pickle by default.
+
+The pickle serializer is a security concern as it may give attackers
+the ability to execute any command.  It's important to secure
+your broker from unauthorized access when using pickle, so we think
+that enabling pickle should require a deliberate action and not be
+the default choice.
+
+If you depend on pickle then you should set a setting to disable this
+warning and to be sure that everything will continue working
+when you upgrade to Celery 3.2::
+
+    CELERY_ACCEPT_CONTENT = ['pickle', 'json', 'msgpack', 'yaml']
+
+You must only enable the serializers that you will actually use.
+
+
+  warnings.warn(CDeprecationWarning(W_PICKLE_DEPRECATED))
+[2015-07-03 18:23:54,234: INFO/MainProcess] Connected to amqp://guest:**@172.17.0.185:5672//
+[2015-07-03 18:23:54,245: INFO/MainProcess] mingle: searching for neighbors
+[2015-07-03 18:23:55,252: INFO/MainProcess] mingle: all alone
+[2015-07-03 18:23:55,264: WARNING/MainProcess] w1@ip-10-0-0-41 ready.
+[2015-07-03 18:24:12,125: INFO/MainProcess] Received task: executable.web_tasks.classifyImages[7cd5ac38-ef78-4c5a-9e32-b2c3518c5911]
+[2015-07-03 18:24:12,566: WARNING/Worker-4] CPU mode
+[2015-07-03 18:24:13,080: WARNING/Worker-4] Loading file: ./images/2007_000175.jpg
+[2015-07-03 18:24:13,090: WARNING/Worker-4] Classifying 1 inputs.
+[2015-07-03 18:24:14,304: WARNING/Worker-4] 1
+[2015-07-03 18:24:14,304: WARNING/Worker-4] Done in 1.21 s.
+[2015-07-03 18:24:14,304: WARNING/Worker-4] Traceback (most recent call last):
+  File "executable/web_tasks.py", line 95, in classifyImages
+    for i, j in enumerate(prediction[0]):
+NameError: global name 'prediction' is not defined
+[2015-07-03 18:24:14,304: WARNING/Worker-4] 23
+[2015-07-03 18:24:14,310: INFO/MainProcess] Task executable.web_tasks.classifyImages[7cd5ac38-ef78-4c5a-9e32-b2c3518c5911] succeeded in 2.18475867901s: None
+[2015-07-03 18:25:19,826: WARNING/MainProcess] /home/ubuntu/cloudcv/ccv/local/lib/python2.7/site-packages/celery/apps/worker.py:161: CDeprecationWarning: 
+Starting from version 3.2 Celery will refuse to accept pickle by default.
+
+The pickle serializer is a security concern as it may give attackers
+the ability to execute any command.  It's important to secure
+your broker from unauthorized access when using pickle, so we think
+that enabling pickle should require a deliberate action and not be
+the default choice.
+
+If you depend on pickle then you should set a setting to disable this
+warning and to be sure that everything will continue working
+when you upgrade to Celery 3.2::
+
+    CELERY_ACCEPT_CONTENT = ['pickle', 'json', 'msgpack', 'yaml']
+
+You must only enable the serializers that you will actually use.
+
+
+  warnings.warn(CDeprecationWarning(W_PICKLE_DEPRECATED))
+[2015-07-03 18:25:19,843: INFO/MainProcess] Connected to amqp://guest:**@172.17.0.185:5672//
+[2015-07-03 18:25:19,853: INFO/MainProcess] mingle: searching for neighbors
+[2015-07-03 18:25:20,859: INFO/MainProcess] mingle: all alone
+[2015-07-03 18:25:20,872: WARNING/MainProcess] w1@ip-10-0-0-41 ready.
+[2015-07-03 18:25:30,966: INFO/MainProcess] Received task: executable.web_tasks.classifyImages[1006e980-bc63-4669-87f8-400b8906a90e]
+[2015-07-03 18:25:31,358: WARNING/Worker-4] CPU mode
+[2015-07-03 18:25:31,890: WARNING/Worker-4] Loading file: ./images/2007_000175.jpg
+[2015-07-03 18:25:31,899: WARNING/Worker-4] Classifying 1 inputs.
+[2015-07-03 18:25:33,100: WARNING/Worker-4] 1
+[2015-07-03 18:25:33,100: WARNING/Worker-4] Done in 1.20 s.
+[2015-07-03 18:25:33,101: WARNING/Worker-4] [['ram, tup', '0.867453'], ['bighorn, bighorn sheep, cimarron, Rocky Mountain bighorn, Rocky Mountain sheep, Ovis canadensis', '0.0263242'], ['koala, koala bear, kangaroo bear, native bear, Phascolarctos cinereus', '0.0163023'], ['wallaby, brush kangaroo', '0.0120344'], ['water buffalo, water ox, Asiatic buffalo, Bubalus bubalis', '0.00738819']]
+[2015-07-03 18:25:33,106: INFO/MainProcess] Task executable.web_tasks.classifyImages[1006e980-bc63-4669-87f8-400b8906a90e] succeeded in 2.13987442301s: None
+[2015-07-03 18:26:26,846: INFO/MainProcess] Received task: executable.web_tasks.classifyImages[6b9c6a97-2081-4f11-9a75-765611320f45]
+[2015-07-03 18:26:27,222: WARNING/Worker-1] CPU mode
+[2015-07-03 18:26:27,737: WARNING/Worker-1] Loading file: ./images/2007_001288.jpg
+[2015-07-03 18:26:27,745: WARNING/Worker-1] Classifying 1 inputs.
+[2015-07-03 18:26:28,965: WARNING/Worker-1] 1
+[2015-07-03 18:26:28,966: WARNING/Worker-1] Done in 1.22 s.
+[2015-07-03 18:26:28,966: WARNING/Worker-1] [['airliner', '0.665052'], ['space shuttle', '0.272756'], ['wing', '0.0283145'], ['warplane, military plane', '0.0153993'], ['projectile, missile', '0.00517617']]
+[2015-07-03 18:26:28,971: INFO/MainProcess] Task executable.web_tasks.classifyImages[6b9c6a97-2081-4f11-9a75-765611320f45] succeeded in 2.12465290198s: None
+[2015-07-03 18:26:33,766: INFO/MainProcess] Received task: executable.web_tasks.classifyImages[c426f209-5008-4572-a409-3b7723149e0d]
+[2015-07-03 18:26:34,174: WARNING/Worker-2] CPU mode
+[2015-07-03 18:26:34,687: WARNING/Worker-2] Loading file: ./images/2007_00128.jpg
+[2015-07-03 18:26:34,693: WARNING/Worker-2] Traceback (most recent call last):
+  File "executable/web_tasks.py", line 67, in classifyImages
+    inputs = [caffe.io.load_image(input_file)]
+  File "/home/ubuntu/caffe/python/caffe/io.py", line 23, in load_image
+    img = skimage.img_as_float(skimage.io.imread(filename)).astype(np.float32)
+  File "/home/ubuntu/cloudcv/ccv/local/lib/python2.7/site-packages/skimage/io/_io.py", line 97, in imread
+    img = call_plugin('imread', fname, plugin=plugin, **plugin_args)
+  File "/home/ubuntu/cloudcv/ccv/local/lib/python2.7/site-packages/skimage/io/manage_plugins.py", line 209, in call_plugin
+    return func(*args, **kwargs)
+  File "/home/ubuntu/cloudcv/ccv/local/lib/python2.7/site-packages/skimage/io/_plugins/pil_plugin.py", line 23, in imread
+    im = Image.open(fname)
+  File "/home/ubuntu/cloudcv/ccv/local/lib/python2.7/site-packages/PIL/Image.py", line 2237, in open
+    fp = builtins.open(fp, "rb")
+IOError: [Errno 2] No such file or directory: './images/2007_00128.jpg'
+[2015-07-03 18:26:34,693: WARNING/Worker-2] 23
+[2015-07-03 18:26:34,695: INFO/MainProcess] Task executable.web_tasks.classifyImages[c426f209-5008-4572-a409-3b7723149e0d] succeeded in 0.928547769989s: None
+[2015-07-03 18:26:47,286: INFO/MainProcess] Received task: executable.web_tasks.classifyImages[7a10b7e2-c625-4578-bc36-235a542ff115]
+[2015-07-03 18:26:47,690: WARNING/Worker-3] CPU mode
+[2015-07-03 18:26:48,196: WARNING/Worker-3] Loading file: ./images/2007_006585.jpg
+[2015-07-03 18:26:48,204: WARNING/Worker-3] Classifying 1 inputs.
+[2015-07-03 18:26:49,377: WARNING/Worker-3] 1
+[2015-07-03 18:26:49,377: WARNING/Worker-3] Done in 1.17 s.
+[2015-07-03 18:26:49,378: WARNING/Worker-3] [['crash helmet', '0.852284'], ['moped', '0.0536256'], ['motor scooter, scooter', '0.0441553'], ['mountain bike, all-terrain bike, off-roader', '0.0374459'], ['bicycle-built-for-two, tandem bicycle, tandem', '0.00968548']]
+[2015-07-03 18:26:49,382: INFO/MainProcess] Task executable.web_tasks.classifyImages[7a10b7e2-c625-4578-bc36-235a542ff115] succeeded in 2.09574261299s: None
+[2015-07-03 18:28:12,915: INFO/MainProcess] Received task: executable.web_tasks.classifyImages[41f8830e-8c15-45b9-945a-bb7c751c57ce]
+[2015-07-03 18:28:12,923: WARNING/Worker-4] CPU mode
+[2015-07-03 18:28:13,417: WARNING/Worker-4] Loading folder: ./images/
+[2015-07-03 18:28:13,505: WARNING/Worker-4] Classifying 15 inputs.
+[2015-07-03 18:28:30,829: WARNING/Worker-4] 15
+[2015-07-03 18:28:30,829: WARNING/Worker-4] Done in 17.32 s.
+[2015-07-03 18:28:30,839: WARNING/Worker-4] {'./images/2007_009817.jpg': [['macaw', '0.692524'], ['toucan', '0.0787628'], ['toyshop', '0.0460024'], ['bobsled, bobsleigh, bob', '0.0442156'], ['peacock', '0.0137253']], './images/2007_006585.jpg': [['crash helmet', '0.852284'], ['moped', '0.0536256'], ['motor scooter, scooter', '0.0441553'], ['mountain bike, all-terrain bike, off-roader', '0.0374459'], ['bicycle-built-for-two, tandem bicycle, tandem', '0.00968548']], './images/2008_000336.jpg': [['basenji', '0.365641'], ['Pembroke, Pembroke Welsh corgi', '0.336669'], ['Ibizan hound, Ibizan Podenco', '0.110068'], ['Cardigan, Cardigan Welsh corgi', '0.081224'], ['Chihuahua', '0.0217091']], './images/P1020360.jpg': [['bighorn, bighorn sheep, cimarron, Rocky Mountain bighorn, Rocky Mountain sheep, Ovis canadensis', '0.0542628'], ['English setter', '0.0519354'], ['alp', '0.0372994'], ['ram, tup', '0.0343496'], ['clumber, clumber spaniel', '0.0328415']], './images/2008_000839.jpg': [['tiger cat', '0.53172'], ['Egyptian cat', '0.179187'], ['tabby, tabby cat', '0.176447'], ['lynx, catamount', '0.0263868'], ['weasel', '0.0151611']], './images/2007_009245.jpg': [['standard poodle', '0.163072'], ['Border collie', '0.148336'], ['borzoi, Russian wolfhound', '0.084381'], ['llama', '0.0718963'], ['German short-haired pointer', '0.0546294']], './images/2008_000189.jpg': [['racer, race car, racing car', '0.796236'], ['sports car, sport car', '0.134128'], ['cab, hack, taxi, taxicab', '0.0277901'], ['convertible', '0.0165144'], ['car wheel', '0.00803407']], './images/2007_000175.jpg': [['ram, tup', '0.867453'], ['bighorn, bighorn sheep, cimarron, Rocky Mountain bighorn, Rocky Mountain sheep, Ovis canadensis', '0.0263242'], ['koala, koala bear, kangaroo bear, native bear, Phascolarctos cinereus', '0.0163023'], ['wallaby, brush kangaroo', '0.0120344'], ['water buffalo, water ox, Asiatic buffalo, Bubalus bubalis', '0.00738819']], './images/P1020366.jpg': [['maze, labyrinth', '0.191696'], ['African crocodile, Nile crocodile, Crocodylus niloticus', '0.173818'], ['alp', '0.0559729'], ['stone wall', '0.0526321'], ['cliff, drop, drop-off', '0.0496382']], './images/2007_007948.jpg': [['sports car, sport car', '0.41873'], ['beach wagon, station wagon, wagon, estate car, beach waggon, station waggon, waggon', '0.270711'], ['racer, race car, racing car', '0.0739943'], ['convertible', '0.0563083'], ['minivan', '0.0543219']], './images/2007_001288.jpg': [['airliner', '0.665052'], ['space shuttle', '0.272756'], ['wing', '0.0283145'], ['warplane, military plane', '0.0153993'], ['projectile, missile', '0.00517617']], './images/P1020359.jpg': [['lakeside, lakeshore', '0.259295'], ['American egret, great white heron, Egretta albus', '0.109407'], ['hippopotamus, hippo, river horse, Hippopotamus amphibius', '0.0823482'], ['little blue heron, Egretta caerulea', '0.0349077'], ['clumber, clumber spaniel', '0.0208972']], './images/P1020358.jpg': [['valley, vale', '0.559647'], ['alp', '0.232233'], ['stone wall', '0.0751681'], ['cliff, drop, drop-off', '0.0545126'], ['viaduct', '0.0235438']], './images/P1020363.jpg': [['lakeside, lakeshore', '0.098069'], ['ptarmigan', '0.0686897'], ['West Highland white terrier', '0.0597405'], ['clumber, clumber spaniel', '0.0536923'], ['spoonbill', '0.0349387']], './images/P1020361.jpg': [['cliff, drop, drop-off', '0.34816'], ['alp', '0.160259'], ['promontory, headland, head, foreland', '0.122582'], ['marmot', '0.037643'], ['volcano', '0.0366992']]}
+[2015-07-03 18:28:30,844: INFO/MainProcess] Task executable.web_tasks.classifyImages[41f8830e-8c15-45b9-945a-bb7c751c57ce] succeeded in 17.928069556s: None
+[2015-07-03 18:33:04,843: INFO/MainProcess] Received task: executable.web_tasks.classifyImages[a86ff9ef-5d46-4b86-ab37-af9780b83cda]
+[2015-07-03 18:33:04,851: WARNING/Worker-1] CPU mode
+[2015-07-03 18:33:05,343: WARNING/Worker-1] Loading folder: ./images
+[2015-07-03 18:33:05,432: WARNING/Worker-1] Classifying 15 inputs.
+[2015-07-03 18:33:22,756: WARNING/Worker-1] 15
+[2015-07-03 18:33:22,757: WARNING/Worker-1] Done in 17.32 s.
+[2015-07-03 18:33:22,765: WARNING/Worker-1] {'./images/2007_009817.jpg': [['macaw', '0.692524'], ['toucan', '0.0787628'], ['toyshop', '0.0460024'], ['bobsled, bobsleigh, bob', '0.0442156'], ['peacock', '0.0137253']], './images/2007_006585.jpg': [['crash helmet', '0.852284'], ['moped', '0.0536256'], ['motor scooter, scooter', '0.0441553'], ['mountain bike, all-terrain bike, off-roader', '0.0374459'], ['bicycle-built-for-two, tandem bicycle, tandem', '0.00968548']], './images/2008_000336.jpg': [['basenji', '0.365641'], ['Pembroke, Pembroke Welsh corgi', '0.336669'], ['Ibizan hound, Ibizan Podenco', '0.110068'], ['Cardigan, Cardigan Welsh corgi', '0.081224'], ['Chihuahua', '0.0217091']], './images/P1020360.jpg': [['bighorn, bighorn sheep, cimarron, Rocky Mountain bighorn, Rocky Mountain sheep, Ovis canadensis', '0.0542628'], ['English setter', '0.0519354'], ['alp', '0.0372994'], ['ram, tup', '0.0343496'], ['clumber, clumber spaniel', '0.0328415']], './images/2008_000839.jpg': [['tiger cat', '0.53172'], ['Egyptian cat', '0.179187'], ['tabby, tabby cat', '0.176447'], ['lynx, catamount', '0.0263868'], ['weasel', '0.0151611']], './images/2007_009245.jpg': [['standard poodle', '0.163072'], ['Border collie', '0.148336'], ['borzoi, Russian wolfhound', '0.084381'], ['llama', '0.0718963'], ['German short-haired pointer', '0.0546294']], './images/2008_000189.jpg': [['racer, race car, racing car', '0.796236'], ['sports car, sport car', '0.134128'], ['cab, hack, taxi, taxicab', '0.0277901'], ['convertible', '0.0165144'], ['car wheel', '0.00803407']], './images/2007_000175.jpg': [['ram, tup', '0.867453'], ['bighorn, bighorn sheep, cimarron, Rocky Mountain bighorn, Rocky Mountain sheep, Ovis canadensis', '0.0263242'], ['koala, koala bear, kangaroo bear, native bear, Phascolarctos cinereus', '0.0163023'], ['wallaby, brush kangaroo', '0.0120344'], ['water buffalo, water ox, Asiatic buffalo, Bubalus bubalis', '0.00738819']], './images/P1020366.jpg': [['maze, labyrinth', '0.191696'], ['African crocodile, Nile crocodile, Crocodylus niloticus', '0.173818'], ['alp', '0.0559729'], ['stone wall', '0.0526321'], ['cliff, drop, drop-off', '0.0496382']], './images/2007_007948.jpg': [['sports car, sport car', '0.41873'], ['beach wagon, station wagon, wagon, estate car, beach waggon, station waggon, waggon', '0.270711'], ['racer, race car, racing car', '0.0739943'], ['convertible', '0.0563083'], ['minivan', '0.0543219']], './images/2007_001288.jpg': [['airliner', '0.665052'], ['space shuttle', '0.272756'], ['wing', '0.0283145'], ['warplane, military plane', '0.0153993'], ['projectile, missile', '0.00517617']], './images/P1020359.jpg': [['lakeside, lakeshore', '0.259295'], ['American egret, great white heron, Egretta albus', '0.109407'], ['hippopotamus, hippo, river horse, Hippopotamus amphibius', '0.0823482'], ['little blue heron, Egretta caerulea', '0.0349077'], ['clumber, clumber spaniel', '0.0208972']], './images/P1020358.jpg': [['valley, vale', '0.559647'], ['alp', '0.232233'], ['stone wall', '0.0751681'], ['cliff, drop, drop-off', '0.0545126'], ['viaduct', '0.0235438']], './images/P1020363.jpg': [['lakeside, lakeshore', '0.098069'], ['ptarmigan', '0.0686897'], ['West Highland white terrier', '0.0597405'], ['clumber, clumber spaniel', '0.0536923'], ['spoonbill', '0.0349387']], './images/P1020361.jpg': [['cliff, drop, drop-off', '0.34816'], ['alp', '0.160259'], ['promontory, headland, head, foreland', '0.122582'], ['marmot', '0.037643'], ['volcano', '0.0366992']]}
+[2015-07-03 18:33:22,770: INFO/MainProcess] Task executable.web_tasks.classifyImages[a86ff9ef-5d46-4b86-ab37-af9780b83cda] succeeded in 17.926386053s: None
+[2015-07-03 18:38:21,554: WARNING/MainProcess] /home/ubuntu/cloudcv/ccv/local/lib/python2.7/site-packages/celery/apps/worker.py:161: CDeprecationWarning: 
+Starting from version 3.2 Celery will refuse to accept pickle by default.
+
+The pickle serializer is a security concern as it may give attackers
+the ability to execute any command.  It's important to secure
+your broker from unauthorized access when using pickle, so we think
+that enabling pickle should require a deliberate action and not be
+the default choice.
+
+If you depend on pickle then you should set a setting to disable this
+warning and to be sure that everything will continue working
+when you upgrade to Celery 3.2::
+
+    CELERY_ACCEPT_CONTENT = ['pickle', 'json', 'msgpack', 'yaml']
+
+You must only enable the serializers that you will actually use.
+
+
+  warnings.warn(CDeprecationWarning(W_PICKLE_DEPRECATED))
+[2015-07-03 18:38:21,570: INFO/MainProcess] Connected to amqp://guest:**@172.17.0.185:5672//
+[2015-07-03 18:38:21,577: INFO/MainProcess] mingle: searching for neighbors
+[2015-07-03 18:38:22,583: INFO/MainProcess] mingle: all alone
+[2015-07-03 18:38:22,596: WARNING/MainProcess] w1@ip-10-0-0-41 ready.
+[2015-07-03 18:38:42,387: INFO/MainProcess] Received task: executable.web_tasks.classifyImages[cbe59106-0f45-40af-8efe-514a6ed0870e]
+[2015-07-03 18:38:42,798: WARNING/Worker-4] CPU mode
+[2015-07-03 18:38:43,313: WARNING/Worker-4] Loading folder: /home/ubuntu/cloudcv/Celery_Prashant/images
+[2015-07-03 18:38:43,404: WARNING/Worker-4] Classifying 15 inputs.
+[2015-07-03 18:39:00,781: WARNING/Worker-4] 15
+[2015-07-03 18:39:00,782: WARNING/Worker-4] Done in 17.38 s.
+[2015-07-03 18:39:00,790: WARNING/Worker-4] {'/home/ubuntu/cloudcv/Celery_Prashant/images/2007_009245.jpg': [['standard poodle', '0.163072'], ['Border collie', '0.148336'], ['borzoi, Russian wolfhound', '0.084381'], ['llama', '0.0718963'], ['German short-haired pointer', '0.0546294']], '/home/ubuntu/cloudcv/Celery_Prashant/images/P1020359.jpg': [['lakeside, lakeshore', '0.259295'], ['American egret, great white heron, Egretta albus', '0.109407'], ['hippopotamus, hippo, river horse, Hippopotamus amphibius', '0.0823482'], ['little blue heron, Egretta caerulea', '0.0349077'], ['clumber, clumber spaniel', '0.0208972']], '/home/ubuntu/cloudcv/Celery_Prashant/images/2007_006585.jpg': [['crash helmet', '0.852284'], ['moped', '0.0536256'], ['motor scooter, scooter', '0.0441553'], ['mountain bike, all-terrain bike, off-roader', '0.0374459'], ['bicycle-built-for-two, tandem bicycle, tandem', '0.00968548']], '/home/ubuntu/cloudcv/Celery_Prashant/images/2007_009817.jpg': [['macaw', '0.692524'], ['toucan', '0.0787628'], ['toyshop', '0.0460024'], ['bobsled, bobsleigh, bob', '0.0442156'], ['peacock', '0.0137253']], '/home/ubuntu/cloudcv/Celery_Prashant/images/P1020361.jpg': [['cliff, drop, drop-off', '0.34816'], ['alp', '0.160259'], ['promontory, headland, head, foreland', '0.122582'], ['marmot', '0.037643'], ['volcano', '0.0366992']], '/home/ubuntu/cloudcv/Celery_Prashant/images/P1020363.jpg': [['lakeside, lakeshore', '0.098069'], ['ptarmigan', '0.0686897'], ['West Highland white terrier', '0.0597405'], ['clumber, clumber spaniel', '0.0536923'], ['spoonbill', '0.0349387']], '/home/ubuntu/cloudcv/Celery_Prashant/images/2008_000839.jpg': [['tiger cat', '0.53172'], ['Egyptian cat', '0.179187'], ['tabby, tabby cat', '0.176447'], ['lynx, catamount', '0.0263868'], ['weasel', '0.0151611']], '/home/ubuntu/cloudcv/Celery_Prashant/images/P1020360.jpg': [['bighorn, bighorn sheep, cimarron, Rocky Mountain bighorn, Rocky Mountain sheep, Ovis canadensis', '0.0542628'], ['English setter', '0.0519354'], ['alp', '0.0372994'], ['ram, tup', '0.0343496'], ['clumber, clumber spaniel', '0.0328415']], '/home/ubuntu/cloudcv/Celery_Prashant/images/2007_000175.jpg': [['ram, tup', '0.867453'], ['bighorn, bighorn sheep, cimarron, Rocky Mountain bighorn, Rocky Mountain sheep, Ovis canadensis', '0.0263242'], ['koala, koala bear, kangaroo bear, native bear, Phascolarctos cinereus', '0.0163023'], ['wallaby, brush kangaroo', '0.0120344'], ['water buffalo, water ox, Asiatic buffalo, Bubalus bubalis', '0.00738819']], '/home/ubuntu/cloudcv/Celery_Prashant/images/P1020366.jpg': [['maze, labyrinth', '0.191696'], ['African crocodile, Nile crocodile, Crocodylus niloticus', '0.173818'], ['alp', '0.0559729'], ['stone wall', '0.0526321'], ['cliff, drop, drop-off', '0.0496382']], '/home/ubuntu/cloudcv/Celery_Prashant/images/2008_000336.jpg': [['basenji', '0.365641'], ['Pembroke, Pembroke Welsh corgi', '0.336669'], ['Ibizan hound, Ibizan Podenco', '0.110068'], ['Cardigan, Cardigan Welsh corgi', '0.081224'], ['Chihuahua', '0.0217091']], '/home/ubuntu/cloudcv/Celery_Prashant/images/P1020358.jpg': [['valley, vale', '0.559647'], ['alp', '0.232233'], ['stone wall', '0.0751681'], ['cliff, drop, drop-off', '0.0545126'], ['viaduct', '0.0235438']], '/home/ubuntu/cloudcv/Celery_Prashant/images/2007_001288.jpg': [['airliner', '0.665052'], ['space shuttle', '0.272756'], ['wing', '0.0283145'], ['warplane, military plane', '0.0153993'], ['projectile, missile', '0.00517617']], '/home/ubuntu/cloudcv/Celery_Prashant/images/2007_007948.jpg': [['sports car, sport car', '0.41873'], ['beach wagon, station wagon, wagon, estate car, beach waggon, station waggon, waggon', '0.270711'], ['racer, race car, racing car', '0.0739943'], ['convertible', '0.0563083'], ['minivan', '0.0543219']], '/home/ubuntu/cloudcv/Celery_Prashant/images/2008_000189.jpg': [['racer, race car, racing car', '0.796236'], ['sports car, sport car', '0.134128'], ['cab, hack, taxi, taxicab', '0.0277901'], ['convertible', '0.0165144'], ['car wheel', '0.00803407']]}
+[2015-07-03 18:39:00,792: INFO/MainProcess] Task executable.web_tasks.classifyImages[cbe59106-0f45-40af-8efe-514a6ed0870e] succeeded in 18.404406949s: None
