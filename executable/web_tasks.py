@@ -1,15 +1,11 @@
+"""
+This file caters to all the jobs for the web server.
+
+Author - Prashant Jalan
+"""
+
 from __future__ import absolute_import
 from executable.celery import app
-
-@app.task
-def add(x, y):
-    return x + y
-
-@app.task(ignore_result=True)
-def mul(x,y):
-    ans = x*y
-    print ans
-    return ans
 
 """
 The function takes as input:
@@ -24,7 +20,7 @@ NOTE:
 5) When running with new version of caffe do np.load(MEAN_FILE).mean(1).mean(1)
 """
 @app.task(ignore_result=True)
-def classifyImages(src_path, socketid, result_path, cpu=True):
+def classifyImages(src_path, socketid, result_path):
     try:
     	import caffe, numpy as np, os, glob, time, operator, scipy.io as sio
 
@@ -40,12 +36,9 @@ def classifyImages(src_path, socketid, result_path, cpu=True):
 	RAW_SCALE = 255.0
 	IMAGE_DIMS = (256, 256)
 	CHANNEL_SWAP = (2, 1, 0)
-	if cpu:
-	    caffe.set_mode_cpu()
-	    print "CPU mode"
-	else:
-	    caffe.set_mode_gpu()
-	    print "GPU mode"
+	
+	#Set CPU mode
+	caffe.set_mode_cpu()
 
 	# Make classifier.
     	classifier = caffe.Classifier(MODEL_FILE, PRETRAINED, image_dims=IMAGE_DIMS, 
