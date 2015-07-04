@@ -95,5 +95,28 @@ def classifyImages(src_path, socketid, result_path):
 
     except Exception as e:
     	#in case of an error, print the whole error with traceback
-	import traceback
+    	import traceback
+        print str(traceback.format_exc()), socketid
+
+
+"""
+The function takes as input:
+1) src_path: Input image or directory. 
+2) output_path: Path to store the decaf features.
+2) socketid: The socket id of the connection.
+3) result_path:
+NOTE:
+1) Its job is to find the decaf features of images according to the pre-trained model.
+2) ignore_result=True signifies that celery won't pass any result to the backend.
+3) log_to_terminal is used to publish messages to the redis server.
+4) It is important to import all the modules only inside the function
+5) When running with new version of caffe do np.load(MEAN_FILE).mean(1).mean(1)
+"""
+@app.task(ignore_result=True)
+def decafImages(src_path, output_path, socketid, result_path):
+	try:
+		pass
+	except Exception as e:
+    	#in case of an error, print the whole error with traceback
+		import traceback
         print str(traceback.format_exc()), socketid
