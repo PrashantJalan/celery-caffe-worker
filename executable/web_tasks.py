@@ -11,7 +11,6 @@ from executable.celery import app
 The function takes as input:
 1) src_path: Input image, directory, or npy. 
 2) socketid: The socket id of the connection.
-3) result_path:
 NOTE:
 1) Its job is to classify the images according to the pre-trained model.
 2) ignore_result=True signifies that celery won't pass any result to the backend.
@@ -20,7 +19,7 @@ NOTE:
 5) When running with new version of caffe do np.load(MEAN_FILE).mean(1).mean(1)
 """
 @app.task(ignore_result=True)
-def classifyImages(src_path, socketid, result_path):
+def classifyImages(src_path, socketid):
 	try:
 		import caffe, numpy as np, os, glob, time, operator, scipy.io as sio
 
@@ -99,10 +98,9 @@ def classifyImages(src_path, socketid, result_path):
 
 """
 The function takes as input:
-1) src_path: Input image or directory. 
-2) output_path: Path to store the decaf features.
+1) src_path: Input image or directory.
 2) socketid: The socket id of the connection.
-3) result_path:
+3) result_path: Path to store the file containing decaf features.
 NOTE:
 1) Its job is to find the decaf features of images according to the pre-trained model.
 2) ignore_result=True signifies that celery won't pass any result to the backend.
@@ -111,7 +109,7 @@ NOTE:
 5) When running with new version of caffe do np.load(MEAN_FILE).mean(1).mean(1)
 """
 @app.task(ignore_result=True)
-def decafImages(src_path, output_path, socketid, result_path):
+def decafImages(src_path, socketid, result_path):
 	try:
 		import caffe, numpy as np, os, glob, time, operator, scipy.io as sio
 
