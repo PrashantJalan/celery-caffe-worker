@@ -138,9 +138,9 @@ def decafImages(src_path, output_path, socketid, result_path):
 				features = blobs[-3][1].data[:,:,0,0]
 				features_center = blobs[-3][1].data[4,:,0,0]
 				features_center = np.resize(features_center, (1,4096))
-	    
-	    		#Saving decaf features
-	    		matfile = {}
+
+				#Saving decaf features
+				matfile = {}
 				matfile['decaf'] = features
 				matfile['decaf_center'] = features_center
 				sio.savemat(os.path.join(result_path, os.path.basename(im_f)+'.mat'), matfile)
@@ -156,9 +156,9 @@ def decafImages(src_path, output_path, socketid, result_path):
 			features = blobs[-3][1].data[:,:,0,0]
 			features_center = blobs[-3][1].data[4,:,0,0]
 			features_center = np.resize(features_center, (1,4096))
-    
-    		#Saving decaf features
-    		matfile = {}
+
+			#Saving decaf features
+			matfile = {}
 			matfile['decaf'] = features
 			matfile['decaf_center'] = features_center
 			sio.savemat(os.path.join(result_path, os.path.basename(input_file)+'.mat'), matfile)
