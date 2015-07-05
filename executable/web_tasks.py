@@ -147,9 +147,10 @@ def decafImages(src_path, output_path, socketid, result_path):
 				matfile = {}
 				matfile['decaf'] = features
 				matfile['decaf_center'] = features_center
-				sio.savemat(os.path.join(result_path, os.path.basename(input_file)+'.mat'), matfile)
+				out_file = os.path.join(result_path, os.path.basename(input_file)+'.mat'), matfile
+				sio.savemat(out_file)
 				print matfile
-				print "Decaf features calculated and saved"
+				print "Decaf features calculated and saved at "+out_file
 		else:
 			input_file = src_path
 			print("Loading file: %s" % input_file)
@@ -166,9 +167,10 @@ def decafImages(src_path, output_path, socketid, result_path):
 			matfile = {}
 			matfile['decaf'] = features
 			matfile['decaf_center'] = features_center
-			sio.savemat(os.path.join(result_path, os.path.basename(input_file)+'.mat'), matfile)
+			out_file = os.path.join(result_path, os.path.basename(input_file)+'.mat'), matfile
+			sio.savemat(out_file)
 			print matfile
-			print "Decaf features calculated and saved"
+			print "Decaf features calculated and saved at "+out_file
 
 	except Exception as e:
 		#In case of an error, print the whole error with traceback
