@@ -21,82 +21,80 @@ NOTE:
 """
 @app.task(ignore_result=True)
 def classifyImages(src_path, socketid, result_path):
-    try:
-    	import caffe, numpy as np, os, glob, time, operator, scipy.io as sio
+	try:
+		import caffe, numpy as np, os, glob, time, operator, scipy.io as sio
 
-	#Used to assign labels to the results
-	matWNID = sio.loadmat(os.path.join(os.path.dirname(__file__),'WNID.mat'))
-	WNID_cells = matWNID['wordsortWNID']
+		#Used to assign labels to the results
+		matWNID = sio.loadmat(os.path.join(os.path.dirname(__file__),'WNID.mat'))
+		WNID_cells = matWNID['wordsortWNID']
 
-    	#Caffe Initialisations
-    	CAFFE_DIR = os.path.normpath(os.path.join(os.path.dirname(caffe.__file__),"..",".."))
-    	MODEL_FILE = os.path.join(CAFFE_DIR, 'models/bvlc_reference_caffenet/deploy.prototxt')
-	PRETRAINED = os.path.join(CAFFE_DIR, 'models/bvlc_reference_caffenet/bvlc_reference_caffenet.caffemodel')
-	MEAN_FILE = os.path.join(CAFFE_DIR, 'python/caffe/imagenet/ilsvrc_2012_mean.npy')
-	RAW_SCALE = 255.0
-	IMAGE_DIMS = (256, 256)
-	CHANNEL_SWAP = (2, 1, 0)
-	
-	#Set CPU mode
-	caffe.set_mode_cpu()
+		#Caffe Initialisations
+		CAFFE_DIR = os.path.normpath(os.path.join(os.path.dirname(caffe.__file__),"..",".."))
+		MODEL_FILE = os.path.join(CAFFE_DIR, 'models/bvlc_reference_caffenet/deploy.prototxt')
+		PRETRAINED = os.path.join(CAFFE_DIR, 'models/bvlc_reference_caffenet/bvlc_reference_caffenet.caffemodel')
+		MEAN_FILE = os.path.join(CAFFE_DIR, 'python/caffe/imagenet/ilsvrc_2012_mean.npy')
+		RAW_SCALE = 255.0
+		IMAGE_DIMS = (256, 256)
+		CHANNEL_SWAP = (2, 1, 0)
 
-	# Make classifier.
-    	classifier = caffe.Classifier(MODEL_FILE, PRETRAINED, image_dims=IMAGE_DIMS, 
-    				mean=np.load(MEAN_FILE), raw_scale=RAW_SCALE,
-            			channel_swap=CHANNEL_SWAP)
+		#Set CPU mode
+		caffe.set_mode_cpu()
 
-	# Load numpy array (.npy), directory glob (*), or image file.
-	input_file = os.path.abspath(src_path)
-	if input_file.endswith('npy'):
-	    print("Loading file: %s" % input_file)
-	    inputs = np.load(args.input_file)
-	elif os.path.isdir(input_file):
-            print("Loading folder: %s" % input_file)
-            inputs = [caffe.io.load_image(im_f) for im_f in glob.glob(input_file + '/*')]
-        else:
-            print("Loading file: %s" % input_file)
-            inputs = [caffe.io.load_image(input_file)]
+		# Make classifier.
+		classifier = caffe.Classifier(MODEL_FILE, PRETRAINED, image_dims=IMAGE_DIMS, 
+		mean=np.load(MEAN_FILE), raw_scale=RAW_SCALE,
+		channel_swap=CHANNEL_SWAP)
 
-    	print("Classifying %d inputs." % len(inputs))
+		# Load numpy array (.npy), directory glob (*), or image file.
+		input_file = os.path.abspath(src_path)
+		if input_file.endswith('npy'):
+			print("Loading file: %s" % input_file)
+			inputs = np.load(args.input_file)
+		elif os.path.isdir(input_file):
+			print("Loading folder: %s" % input_file)
+			inputs = [caffe.io.load_image(im_f) for im_f in glob.glob(input_file + '/*')]
+		else:
+			print("Loading file: %s" % input_file)
+			inputs = [caffe.io.load_image(input_file)]
 
-    	# Classify.
-    	start = time.time()
-    	prediction = classifier.predict(inputs)
-	print len(prediction)
-    	print("Done in %.2f s." % (time.time() - start))
+		# Classify.
+		print("Classifying %d inputs." % len(inputs))
+		start = time.time()
+		prediction = classifier.predict(inputs)
+		print("Done in %.2f s." % (time.time() - start))
 
-	#Send Results
-	if os.path.isdir(input_file):
-	    results = {}
-	    count = 0
-	    for im_f in glob.glob(input_file + '/*'):
-		dictionary = {}
-            	for i, j in enumerate(prediction[count]):
-                    dictionary[i] = j
-		predsorted = sorted(dictionary.iteritems(), key=operator.itemgetter(1), reverse=True)
-            	top5 = predsorted[0:5]
-            	topresults = []
-            	for item in top5:
-                    topresults.append([str(WNID_cells[item, 0][0][0]),str(item[1])])
-		results[im_f] = topresults
-		count += 1
-            print results
-	else:
-	    dictionary = {}
-	    for i, j in enumerate(prediction[0]):
-		dictionary[i] = j
+		#Send Results
+		if os.path.isdir(input_file):
+			results = {}
+			count = 0
+			for im_f in glob.glob(input_file + '/*'):
+				dictionary = {}
+				for i, j in enumerate(prediction[count]):
+					dictionary[i] = j
+				predsorted = sorted(dictionary.iteritems(), key=operator.itemgetter(1), reverse=True)
+				top5 = predsorted[0:5]
+				topresults = []
+				for item in top5:
+					topresults.append([str(WNID_cells[item, 0][0][0]),str(item[1])])
+					results[im_f] = topresults
+				count += 1
+			print results
+		else:
+			dictionary = {}
+			for i, j in enumerate(prediction[0]):
+				dictionary[i] = j
 
-    	    predsorted = sorted(dictionary.iteritems(), key=operator.itemgetter(1), reverse=True)
-	    top5 = predsorted[0:5]
-	    topresults = [] 
-	    for item in top5:
-		topresults.append([str(WNID_cells[item, 0][0][0]),str(item[1])])
-	    print topresults
+			predsorted = sorted(dictionary.iteritems(), key=operator.itemgetter(1), reverse=True)
+			top5 = predsorted[0:5]
+			topresults = [] 
+			for item in top5:
+				topresults.append([str(WNID_cells[item, 0][0][0]),str(item[1])])
+			print topresults
 
-    except Exception as e:
-    	#in case of an error, print the whole error with traceback
-    	import traceback
-        print str(traceback.format_exc()), socketid
+	except Exception as e:
+		#In case of an error, print the whole error with traceback
+		import traceback
+		print str(traceback.format_exc()), socketid
 
 
 """
@@ -115,8 +113,60 @@ NOTE:
 @app.task(ignore_result=True)
 def decafImages(src_path, output_path, socketid, result_path):
 	try:
-		pass
+		import caffe, numpy as np, os, glob, time, operator, scipy.io as sio
+
+		#Caffe Initialisations
+		CAFFE_DIR = os.path.normpath(os.path.join(os.path.dirname(caffe.__file__),"..",".."))
+		MODEL_FILE = os.path.join(CAFFE_DIR, 'models/bvlc_reference_caffenet/deploy.prototxt')
+		PRETRAINED = os.path.join(CAFFE_DIR, 'models/bvlc_reference_caffenet/bvlc_reference_caffenet.caffemodel')
+
+		#Set CPU mode
+		caffe.set_mode_cpu()
+
+		# Make classifier.
+		classifier = caffe.Classifier(MODEL_FILE, PRETRAINED)
+
+		#Find decaf features and send Results
+		if os.path.isdir(input_file):
+			for im_f in glob.glob(input_file + '/*'):
+				print("Loading file: %s" % im_f)
+				input_image = caffe.io.load_image(im_f)
+				
+				#Finding decaf features
+				classifier.predict([input_image])
+				blobs = classifier.blobs.items()
+				features = blobs[-3][1].data[:,:,0,0]
+				features_center = blobs[-3][1].data[4,:,0,0]
+				features_center = np.resize(features_center, (1,4096))
+	    
+	    		#Saving decaf features
+	    		matfile = {}
+				matfile['decaf'] = features
+				matfile['decaf_center'] = features_center
+				sio.savemat(os.path.join(result_path, os.path.basename(im_f)+'.mat'), matfile)
+				print matfile
+				print "Decaf features calculated and saved"
+		else:
+			print("Loading file: %s" % input_file)
+			input_image = caffe.io.load_image(input_file)
+			
+			#Finding decaf features
+			classifier.predict([input_image])
+			blobs = classifier.blobs.items()
+			features = blobs[-3][1].data[:,:,0,0]
+			features_center = blobs[-3][1].data[4,:,0,0]
+			features_center = np.resize(features_center, (1,4096))
+    
+    		#Saving decaf features
+    		matfile = {}
+			matfile['decaf'] = features
+			matfile['decaf_center'] = features_center
+			sio.savemat(os.path.join(result_path, os.path.basename(input_file)+'.mat'), matfile)
+			print matfile
+			print "Decaf features calculated and saved"
+
 	except Exception as e:
-    	#in case of an error, print the whole error with traceback
+		#In case of an error, print the whole error with traceback
 		import traceback
-        print str(traceback.format_exc()), socketid
+		print str(traceback.format_exc()), socketid
+
