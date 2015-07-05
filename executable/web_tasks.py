@@ -126,11 +126,15 @@ def decafImages(src_path, output_path, socketid, result_path):
 		# Make classifier.
 		classifier = caffe.Classifier(MODEL_FILE, PRETRAINED)
 
+		#Getting absolute paths
+		src_path = os.path.abspath(src_path)
+		result_path = os.path.abspath(result_path)
+
 		#Find decaf features and send Results
-		if os.path.isdir(input_file):
-			for im_f in glob.glob(input_file + '/*'):
-				print("Loading file: %s" % im_f)
-				input_image = caffe.io.load_image(im_f)
+		if os.path.isdir(src_path):
+			for input_file in glob.glob(src_path + '/*'):
+				print("Loading file: %s" % input_file)
+				input_image = caffe.io.load_image(input_file)
 				
 				#Finding decaf features
 				classifier.predict([input_image])
@@ -143,10 +147,11 @@ def decafImages(src_path, output_path, socketid, result_path):
 				matfile = {}
 				matfile['decaf'] = features
 				matfile['decaf_center'] = features_center
-				sio.savemat(os.path.join(result_path, os.path.basename(im_f)+'.mat'), matfile)
+				sio.savemat(os.path.join(result_path, os.path.basename(input_file)+'.mat'), matfile)
 				print matfile
 				print "Decaf features calculated and saved"
 		else:
+			input_file = src_path
 			print("Loading file: %s" % input_file)
 			input_image = caffe.io.load_image(input_file)
 			
