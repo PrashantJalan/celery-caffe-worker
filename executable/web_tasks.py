@@ -147,8 +147,8 @@ def decafImages(src_path, output_path, socketid, result_path):
 				matfile = {}
 				matfile['decaf'] = features
 				matfile['decaf_center'] = features_center
-				out_file = os.path.join(result_path, os.path.basename(input_file)+'.mat'), matfile
-				sio.savemat(out_file)
+				out_file = os.path.join(result_path, os.path.basename(input_file)+'.mat')
+				sio.savemat(out_file, matfile)
 				print matfile
 				print "Decaf features calculated and saved at "+out_file
 		else:
@@ -167,8 +167,8 @@ def decafImages(src_path, output_path, socketid, result_path):
 			matfile = {}
 			matfile['decaf'] = features
 			matfile['decaf_center'] = features_center
-			out_file = os.path.join(result_path, os.path.basename(input_file)+'.mat'), matfile
-			sio.savemat(out_file)
+			out_file = os.path.join(result_path, os.path.basename(input_file)+'.mat')
+			sio.savemat(out_file, matfile)
 			print matfile
 			print "Decaf features calculated and saved at "+out_file
 
